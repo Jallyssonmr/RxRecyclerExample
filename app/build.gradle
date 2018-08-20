@@ -4,7 +4,7 @@ apply plugin: 'me.tatarka.retrolambda'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion '25.0.2'
+    buildToolsVersion '26.0.1'
     defaultConfig {
         applicationId "com.orafaaraujo.rxrecyclerexample"
         minSdkVersion 19
@@ -34,4 +34,7 @@ dependencies {
     apt 'com.jakewharton:butterknife-compiler:8.4.0'
     compile 'io.reactivex:rxjava:1.2.2'
     compile 'io.reactivex:rxandroid:1.2.1'
+    compile 'com.squareup.retrofit2:retrofit:2.4.0'
+    compile 'com.google.code.gson:gson:2.8.5'
+    compile 'com.squareup.retrofit2:converter-gson:2.4.0'
 }
