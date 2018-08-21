@@ -11,17 +11,7 @@
         android:id="@+id/recycler_view_layour_recycler_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/main_line_view"/>
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/recycler_view_layour_fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:backgroundTint="@color/colorPrimaryDark"
-        app:fabSize="normal"
-        app:srcCompat="@drawable/ic_add_white_24dp"
-        tools:ignore="VectorDrawableCompat"/>
+        android:background="@color/colorRecyclerView"
+        tools:listitem="@layout/sinopse_recycler"/>
 
 </FrameLayout>

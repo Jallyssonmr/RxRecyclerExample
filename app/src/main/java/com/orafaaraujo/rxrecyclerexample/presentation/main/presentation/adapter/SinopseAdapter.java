@@ -37,15 +37,12 @@ public class SinopseAdapter extends RecyclerView.Adapter
 
         SinopseModel sinopse  = this.sinopses.get(position);
 
-        holder.title.setText(String.format(Locale.getDefault(), "%s, %s",
-                sinopse.getTitulo(),
-                sinopse.getAno()
-        ));
+        holder.title.setText(this.sinopses.get(position).getTitulo());
 
-        holder.genre.setText(this.sinopses.get(position).getGenero());
+        holder.desc.setText(this.sinopses.get(position).getGenero());
 
-        //holder.moreButton.setOnClickListener(view -> updateItem(position));
-        //holder.deleteButton.setOnClickListener(view -> removerItem(position));
+        holder.moreButton.setOnClickListener(view -> updateItem(position));
+        holder.deleteButton.setOnClickListener(view -> removerItem(position));
     }
 
     // Método responsável por atualizar um usuário já existente na lista.

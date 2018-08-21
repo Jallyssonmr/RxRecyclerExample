@@ -12,11 +12,11 @@ import butterknife.ButterKnife;
 
 public class SinopseViewHolder extends RecyclerView.ViewHolder
 {
-    @BindView(R.id.item_sinopse_title)
+    @BindView(R.id.main_card_title)
     public TextView title;
 
-    @BindView(R.id.item_sinopse_genre)
-    public TextView genre;
+    @BindView(R.id.main_card_desc)
+    public TextView desc;
 
     @BindView(R.id.main_card_more)
     public ImageButton moreButton;

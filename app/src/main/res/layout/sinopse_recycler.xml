@@ -12,64 +12,56 @@
         android:layout_gravity="center"
         android:layout_margin="8dp"
         card_view:cardCornerRadius="2dp"
-        card_view:contentPadding="8dp">
+        card_view:contentPadding="5dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/item_sinopse_title"
+                android:id="@+id/main_card_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_centerVertical="true"
-                android:gravity="top"
                 android:layout_marginStart="8dp"
                 android:textStyle="bold"
-                tools:text=""/>
-
-            <ImageView
-                android:id="@+id/item_sinopse_image"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/item_sinopse_title"
-                android:layout_margin="16dp"
-                android:gravity="center"
-                android:src="@drawable/tokyo_ghoul"/>
+                android:textSize="18dp"
+                tools:text="Line 1"/>
 
             <TextView
-                android:id="@+id/item_sinopse_genre"
+                android:id="@+id/main_card_desc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/item_sinopse_image"
+                android:layout_below="@id/main_card_title"
                 android:layout_margin="16dp"
                 android:gravity="center"
-                android:textColor="@color/colorPrimaryDark"
+                android:textSize="16dp"
+                android:textColor="@color/colorAccent"
                 android:textStyle="italic"
-                tools:text=""/>
+                tools:text="Quis custodiet ipsos custodes?"/>
 
             <ImageButton
                 android:id="@+id/main_card_more"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/item_sinopse_genre"
+                android:layout_below="@id/main_card_desc"
                 android:layout_toStartOf="@+id/main_card_delete"
                 android:background="?selectableItemBackground"
                 android:contentDescription="@string/more_view"
-                android:padding="16dp"
-                android:src="@drawable/ic_add_black_24dp"/>
+                android:padding="8dp"
+                android:src="@drawable/ic_favorite_border_black_24dp"/>
 
             <ImageButton
                 android:id="@id/main_card_delete"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:layout_below="@id/item_sinopse_genre"
+                android:layout_below="@id/main_card_desc"
                 android:background="?selectableItemBackground"
                 android:contentDescription="@string/delete_view"
-                android:padding="16dp"
-                android:src="@drawable/ic_delete_black_24dp"/>
+                android:padding="8dp"
+                android:src="@drawable/ic_feedback_black_24dp"/>
 
 
         </RelativeLayout>
