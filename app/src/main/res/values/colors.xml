@@ -4,4 +4,8 @@
     <color name="colorPrimaryDark">#51A736</color>
     <color name="colorAccent">#808183</color>
     <color name="colorRecyclerView">#efecec</color>
+
+    <color name="textColorPrimary">#FFFFFF</color>
+    <color name="windowBackground">#FFFFFF</color>
+    <color name="navigationBarColor">#000000</color>
 </resources>
