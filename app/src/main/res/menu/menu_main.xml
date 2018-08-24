@@ -3,10 +3,4 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.jallysson.app.MainActivity" >
 
-    <item android:id="@+id/action_settings"
-        android:title="@string/action_favorite"
-        android:orderInCategory="100"
-        android:icon="@drawable/ic_action_favorite_holo_dark"
-        app:showAsAction="always" />
-
 </menu>

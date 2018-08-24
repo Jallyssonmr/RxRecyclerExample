@@ -1,33 +1,41 @@
 package com.orafaaraujo.rxrecyclerexample.presentation.main.presentation.adapter;
 
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.app.FragmentPagerAdapter;
 
-import com.orafaaraujo.rxrecyclerexample.presentation.main.fragment.FavoriteFragment;
+import java.util.ArrayList;
+import java.util.List;
 
-public class ViewPagerAdapter extends FragmentStatePagerAdapter
+public class ViewPagerAdapter extends FragmentPagerAdapter
 {
-    private int mNumOfTabs;
+    private final List<Fragment> listFragment = new ArrayList<>();
 
-    public ViewPagerAdapter(FragmentManager fm, int NumOfTabs) {
+    private final List<String> listTitles = new ArrayList<>();
+
+    public ViewPagerAdapter(FragmentManager fm)   {
         super(fm);
-        this.mNumOfTabs = NumOfTabs;
     }
 
     @Override
-    public android.support.v4.app.Fragment getItem(int position) {
-
-        switch (position) {
-            case 0:
-                FavoriteFragment tab1 = new FavoriteFragment();
-                return tab1;
-            default:
-                return null;
-        }
+    public android.support.v4.app.Fragment getItem(int position)
+    {
+       return this.listFragment.get(position);
     }
 
     @Override
     public int getCount() {
-        return mNumOfTabs;
+        return this.listTitles.size();
+    }
+
+    @Override
+    public CharSequence getPageTitle(int position) {
+        return this.listTitles.get(position);
+    }
+
+    public void AddFragment (Fragment fragment, String title)
+    {
+        this.listFragment.add(fragment);
+        this.listTitles.add(title);
     }
 }

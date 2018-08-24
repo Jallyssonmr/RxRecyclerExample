@@ -3,16 +3,20 @@ package com.orafaaraujo.rxrecyclerexample.presentation.main.presentation.adapter
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.orafaaraujo.rxrecyclerexample.R;
 import com.orafaaraujo.rxrecyclerexample.presentation.main.model.SinopseModel;
-import com.orafaaraujo.rxrecyclerexample.presentation.main.presentation.adapter.viewholder.SinopseViewHolder;
 
 import java.util.List;
-import java.util.Locale;
 
-public class SinopseAdapter extends RecyclerView.Adapter
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
+public class SinopseAdapter extends RecyclerView.Adapter<SinopseAdapter.FavoriteViewHolder>
 {
     private List<SinopseModel> sinopses;
 
@@ -25,18 +29,14 @@ public class SinopseAdapter extends RecyclerView.Adapter
     }
 
     @Override
-    public SinopseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new SinopseViewHolder(LayoutInflater.from(parent.getContext())
+    public FavoriteViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        return new FavoriteViewHolder(LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.sinopse_recycler, parent, false));
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int position)
+    public void onBindViewHolder(SinopseAdapter.FavoriteViewHolder holder, int position)
     {
-        SinopseViewHolder holder = (SinopseViewHolder) viewHolder;
-
-        SinopseModel sinopse  = this.sinopses.get(position);
-
         holder.title.setText(this.sinopses.get(position).getTitulo());
 
         holder.desc.setText(this.sinopses.get(position).getGenero());
@@ -61,6 +61,26 @@ public class SinopseAdapter extends RecyclerView.Adapter
     @Override
     public int getItemCount() {
         return this.sinopses != null ? this.sinopses.size() : 0;
+    }
+
+    public static class FavoriteViewHolder extends RecyclerView.ViewHolder
+    {
+        @BindView(R.id.main_card_title)
+        public TextView title;
+
+        @BindView(R.id.main_card_desc)
+        public TextView desc;
+
+        @BindView(R.id.main_card_more)
+        public ImageButton moreButton;
+
+        @BindView(R.id.main_card_delete)
+        public ImageButton deleteButton;
+
+        public FavoriteViewHolder(View itemView) {
+            super(itemView);
+            ButterKnife.bind(this, itemView);
+        }
     }
 }
 

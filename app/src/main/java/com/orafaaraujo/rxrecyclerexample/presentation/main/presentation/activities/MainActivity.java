@@ -16,6 +16,7 @@ import android.view.MenuItem;
 
 import com.orafaaraujo.rxrecyclerexample.R;
 import com.orafaaraujo.rxrecyclerexample.presentation.main.Service.SinopseServiceAsync;
+import com.orafaaraujo.rxrecyclerexample.presentation.main.fragment.FavoriteFragment;
 import com.orafaaraujo.rxrecyclerexample.presentation.main.model.SinopseModel;
 import com.orafaaraujo.rxrecyclerexample.presentation.main.presentation.adapter.SinopseAdapter;
 import com.orafaaraujo.rxrecyclerexample.presentation.main.presentation.adapter.ViewPagerAdapter;
@@ -25,7 +26,13 @@ import java.util.concurrent.ExecutionException;
 
 public class MainActivity extends AppCompatActivity
 {
-    private List<SinopseModel> sinopses;
+    private TabLayout tabLayout;
+
+    private ViewPager viewPager;
+
+    private ViewPagerAdapter viewPagerAdapter;
+
+    public static List<SinopseModel> sinopses;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -35,7 +42,20 @@ public class MainActivity extends AppCompatActivity
 
         this.GetSinopses();
 
-        this.CreateViewPager();
+        this.tabLayout = (TabLayout) findViewById(R.id.tab_layout);
+        this.viewPager = (ViewPager) findViewById(R.id.pager);
+        this.viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
+
+        // Add Fragment here
+
+        this.viewPagerAdapter.AddFragment(new FavoriteFragment(), "Mangás");
+        this.viewPagerAdapter.AddFragment(new FavoriteFragment(), "Favoritos");
+        this.viewPagerAdapter.AddFragment(new FavoriteFragment(), "");
+
+        this.viewPager.setAdapter(this.viewPagerAdapter);
+        this.tabLayout.setupWithViewPager(this.viewPager);
+
+        this.tabLayout.getTabAt(2).setIcon(R.drawable.ic_notification_holo_dark);
     }
 
     private void GetSinopses()
@@ -54,60 +74,5 @@ public class MainActivity extends AppCompatActivity
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
-
-        if (this.sinopses != null)
-        {
-            RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view_layour_recycler_main);
-
-            recyclerView.setAdapter(new SinopseAdapter(this.sinopses, this));
-
-            StaggeredGridLayoutManager layoutManager =
-                    new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL);
-            recyclerView.setLayoutManager(layoutManager);
-
-            recyclerView.setLayoutManager(layoutManager);
-        }
-    }
-
-    private void CreateViewPager()
-    {
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
-        tabLayout.addTab(tabLayout.newTab().setText("Mangás"));
-        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
-
-        final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
-        final ViewPagerAdapter adapter = new ViewPagerAdapter
-                (getSupportFragmentManager(), tabLayout.getTabCount());
-        viewPager.setAdapter(adapter);
-        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                viewPager.setCurrentItem(tab.getPosition());
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
-        });
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 }
