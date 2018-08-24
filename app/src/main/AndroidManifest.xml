@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.orafaaraujo.rxrecyclerexample">
+          package="com.unnamed.manga">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <application
@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
         <activity
-            android:name=".presentation.main.presentation.activities.MainActivity"
+            android:name=".presentation.unnamed.presentation.activities.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme">
             <intent-filter>
@@ -19,19 +19,6 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-
-        <activity
-            android:name=".presentation.main.presentation.activities.LinearLayoutActivity"
-            android:theme="@style/AppTheme"/>
-
-        <activity
-            android:name=".presentation.main.presentation.activities.LinearLayoutHorizontalActivity"/>
-
-        <activity
-            android:name=".presentation.main.presentation.activities.GridLayoutActivity"/>
-
-        <activity
-            android:name=".presentation.main.presentation.activities.StaggeredGridLayoutActivity"/>
 
     </application>
 

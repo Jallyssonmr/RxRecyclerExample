@@ -1,25 +1,25 @@
-package com.orafaaraujo.rxrecyclerexample.presentation.main.Util;
+package com.unnamed.manga.util;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParseException;
-import com.orafaaraujo.rxrecyclerexample.presentation.main.model.SinopseModel;
+import com.unnamed.manga.model.MangaModel;
 
 import java.lang.reflect.Type;
 
-public class SinopseDeserialize implements JsonDeserializer<SinopseModel>
+public class MangaDeserialize implements JsonDeserializer<MangaModel>
 {
     @Override
-    public SinopseModel deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+    public MangaModel deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
         JsonElement sinopse = json.getAsJsonObject();
 
         if (json.getAsJsonObject().get("sinopse") != null){
             sinopse = json.getAsJsonObject();
         }
 
-        return (new Gson().fromJson(sinopse, SinopseModel.class));
+        return (new Gson().fromJson(sinopse, MangaModel.class));
     }
 }
 

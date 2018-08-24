@@ -1,8 +1,8 @@
-package com.orafaaraujo.rxrecyclerexample.presentation.main.model;
+package com.unnamed.manga.model;
 
 import java.io.Serializable;
 
-public class SinopseModel implements Serializable
+public class MangaModel implements Serializable
 {
     private String Titulo;
 
@@ -12,7 +12,7 @@ public class SinopseModel implements Serializable
 
     private String Texto;
 
-    public SinopseModel()
+    public MangaModel()
     {
 
     }

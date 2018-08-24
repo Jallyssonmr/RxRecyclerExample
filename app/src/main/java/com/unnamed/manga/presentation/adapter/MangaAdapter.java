@@ -1,4 +1,4 @@
-package com.orafaaraujo.rxrecyclerexample.presentation.main.presentation.adapter;
+package com.unnamed.manga.presentation.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -8,38 +8,38 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.orafaaraujo.rxrecyclerexample.R;
-import com.orafaaraujo.rxrecyclerexample.presentation.main.model.SinopseModel;
+import com.unnamed.manga.R;
+import com.unnamed.manga.model.MangaModel;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class SinopseAdapter extends RecyclerView.Adapter<SinopseAdapter.FavoriteViewHolder>
+public class MangaAdapter extends RecyclerView.Adapter<MangaAdapter.FavoriteViewHolder>
 {
-    private List<SinopseModel> sinopses;
+    private List<MangaModel> mangas;
 
     private Context context;
 
-    public SinopseAdapter(List<SinopseModel> sinopses, Context context)
+    public MangaAdapter(List<MangaModel> mangas, Context context)
     {
-        this.sinopses = sinopses;
+        this.mangas = mangas;
         this.context = context;
     }
 
     @Override
     public FavoriteViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         return new FavoriteViewHolder(LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.sinopse_recycler, parent, false));
+                .inflate(R.layout.manga_recycler, parent, false));
     }
 
     @Override
-    public void onBindViewHolder(SinopseAdapter.FavoriteViewHolder holder, int position)
+    public void onBindViewHolder(MangaAdapter.FavoriteViewHolder holder, int position)
     {
-        holder.title.setText(this.sinopses.get(position).getTitulo());
+        holder.title.setText(this.mangas.get(position).getTitulo());
 
-        holder.desc.setText(this.sinopses.get(position).getGenero());
+        holder.desc.setText(this.mangas.get(position).getGenero());
 
         holder.moreButton.setOnClickListener(view -> updateItem(position));
         holder.deleteButton.setOnClickListener(view -> removerItem(position));
@@ -47,20 +47,20 @@ public class SinopseAdapter extends RecyclerView.Adapter<SinopseAdapter.Favorite
 
     // Método responsável por atualizar um usuário já existente na lista.
     private void updateItem(int position) {
-        SinopseModel userModel = this.sinopses.get(position);
+        MangaModel userModel = this.mangas.get(position);
         notifyItemChanged(position);
     }
 
     // Método responsável por remover um usuário da lista.
     private void removerItem(int position) {
-        this.sinopses.remove(position);
+        this.mangas.remove(position);
         notifyItemRemoved(position);
-        notifyItemRangeChanged(position, this.sinopses.size());
+        notifyItemRangeChanged(position, this.mangas.size());
     }
 
     @Override
     public int getItemCount() {
-        return this.sinopses != null ? this.sinopses.size() : 0;
+        return this.mangas != null ? this.mangas.size() : 0;
     }
 
     public static class FavoriteViewHolder extends RecyclerView.ViewHolder

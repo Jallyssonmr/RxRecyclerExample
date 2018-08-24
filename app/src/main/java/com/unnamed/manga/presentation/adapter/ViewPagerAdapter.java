@@ -1,4 +1,4 @@
-package com.orafaaraujo.rxrecyclerexample.presentation.main.presentation.adapter;
+package com.unnamed.manga.presentation.adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
